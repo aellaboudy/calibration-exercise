@@ -1,6 +1,7 @@
 <launch>
 	<node pkg="rosbag" type="play" name="player" args="/home/ubuntu/Downloads/camera-calibrated.bag /sensors/camera/image_color:=/sensors/camera/image_raw"/>
 	<node name="output_rectified" pkg="image_proc" type="image_proc" ns="sensors/camera/" />
-	<node name="image_viewer" pkg="image_view" type="image_view" args="image:=/sensors/camera/image_rect" />
+	<node name="image_viewer_rect" pkg="image_view" type="image_view" args="image:=/sensors/camera/image_rect_color" />
+	<node name="image_viewer" pkg="image_view" type="image_view" args="image:=/sensors/camera/image_color" />
 
 </launch>

@@ -1,5 +1,5 @@
 <launch>
-	<node pkg="rosbag" type="play" name="player" args="/home/ubuntu/Downloads/camera-only.bag"/>
+	<node pkg="rosbag" type="play" name="player" args="/home/ubuntu/Downloads/2016-11-22-14-32-13_test.bag"/>
 	<node name="calibrator" pkg="camera_calibration" type="cameracalibrator.py" args="--size 5x7 --square 0.05 image:=/sensors/camera/image_color camera:=/sensors/camera --no-service-check"/>
 
 
