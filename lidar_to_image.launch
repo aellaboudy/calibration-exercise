@@ -1,6 +1,6 @@
 <launch>
 	<param name="use_sim_time" value="true" />
-	<node name="rosbag" pkg="rosbag" type="play" args="-r 0.01 -s 73 --clock /home/ubuntu/Downloads/camera-calibrated.bag"/>
+	<node name="rosbag" pkg="rosbag" type="play" args="-r 0.25 --clock /home/ubuntu/Downloads/camera-calibrated.bag"/>
 	<node name="image_proc" pkg="image_proc" type="image_proc" respawn="false" ns="/sensors/camera">
 		<remap from="image_raw" to="image_color"/>
 	</node>
@@ -12,4 +12,7 @@
 		<remap from="velodyne" to="/sensors/velodyne_points"/>
 		<remap from="velodyne_rgb_points" to="/sensors/velodyne_rgb_points"/>
 	</node>
+	<node name="convert_pcl_to_image" pkg="pcl_ros" type="pointcloud_to_pcd" args="input:=/sensors/velodyne_rgb_points _prefix:=/home/ubuntu/pcd_files/" />
+
+
 </launch>
